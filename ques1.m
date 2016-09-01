@@ -1,0 +1,10 @@
+clc;
+close all;
+clear;
+k=1;
+I = double(imread('Assignment2/bell.jpg'));
+G = fspecial('gaussian',[3 3],2);
+h = imfilter(I,G);
+I1 = I - h;
+I2 = I + k*I1;
+imshow(uint8(I2));
