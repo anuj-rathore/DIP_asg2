@@ -33,4 +33,4 @@ end
 
 result = result*255;
 subplot(1,2,2);
-imshow(uint8(B));
+imshow(uint8(result));
