@@ -1,26 +1,28 @@
+clc;
+clear;
+close all;
 img = double(imread('Assignment2/boy_smiling.jpg'));
 sz = size(img);
 yc = sz(1)/2; 
 xc = sz(2)/2;
-[x,y] = meshgrid(1:Ncolumns, 1:Nrows);
+[x,y] = meshgrid(1:sz(2), 1:sz(1));
 
 r = sqrt( (x-xc).^2+ (y-yc).^2);
+rmax = 200;
 theta = atan2(y-yc, x-xc);
-a = 1.5;b = 10; c = 0.6; 
-d = 1/150;
-s = 1./(1+exp(b*(c-d*r)));
+alpha = 2;
 
-thetatilde = theta + (1.0 - s)*a;
-xtilde = r.*cos(thetatilde) + xc;
-ytilde = r.*sin(thetatilde) + yc;
+thetat = theta + alpha * (rmax-r)/rmax;
+x1 = r.*cos(thetat) + xc;
+y1 = r.*sin(thetat) + yc;
 
 out = uint8(zeros(sz(1), sz(2), sz(3)));
-xtilde = floor(max(1, min(sz(2), xtilde)));
-ytilde = floor(max(1, min(sz(1), ytilde)));
+x1 = floor(max(1, min(sz(2), x1)));
+y1 = floor(max(1, min(sz(1), y1)));
 
-for n=1:sz(1)
-    for m=1:sz(2)
-        out(n,m,:) = img(ytilde(n,m),xtilde(n,m),:);
+for i=1:sz(1)
+    for j=1:sz(2)
+        out(i,j,:) = img(y1(i,j),x1(i,j),:);
     end
 end
-imshow(out);
+imshow(uint8(out));
