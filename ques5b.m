@@ -1,15 +1,17 @@
 clc;
 clear;
 close all;
-im = double(imread('Assignment2/face.jpg'));
+im = double(imread('Assignment2/boy_smiling.jpg'));
 subplot(1,2,1)
 imshow(uint8(im));
 output = zeros(size(im));
 sz = size(im);
+
 xc = round(sz(1)/2);
 yc = round(sz(2)/2);
-alpha = 2;
-rmax = 200; 
+
+alpha = 1.5;
+rmax = 100; 
 for x=1:sz(1)
     for y=1:sz(2)
         dx = x - xc;

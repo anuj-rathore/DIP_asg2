@@ -3,7 +3,7 @@ subplot(1,2,1);
 imshow(uint8(im));
 
 im = im/255;
-w = 3;
+w = 2;
 sigma_d = 2;
 sigma_r = 0.1;
 
