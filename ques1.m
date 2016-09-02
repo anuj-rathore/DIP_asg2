@@ -1,7 +1,7 @@
 clc;
 close all;
 clear;
-k=1;
+k=5;
 I = double(imread('Assignment2/bell.jpg'));
 G = fspecial('gaussian',[3 3],2);
 h = imfilter(I,G);

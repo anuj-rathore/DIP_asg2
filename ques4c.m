@@ -10,7 +10,7 @@ im = applycform(im,makecform('srgb2lab'));
 
 % Pre-compute Gaussian domain weights.
 [X,Y] = meshgrid(-w:w,-w:w);
-G = exp(-(X.^2+Y.^2)/(2*sigma_d^2));
+G = exp((X.^2+Y.^2)/(2*sigma_d^2));
 
 % Rescale range variance (using maximum luminance).
 sigma_r = 100*sigma_r;
@@ -33,7 +33,7 @@ for i = 1:sz(1)
          dL = I(:,:,1)-im(i,j,1);
          da = I(:,:,2)-im(i,j,2);
          db = I(:,:,3)-im(i,j,3);
-         H = exp(-(dL.^2+da.^2+db.^2)/(2*sigma_r^2));
+         H = exp((dL.^2+da.^2+db.^2)/(2*sigma_r^2));
       
          % Calculate bilateral filter response.
          F = H.*G((iMin:iMax)-i+w+1,(jMin:jMax)-j+w+1);
