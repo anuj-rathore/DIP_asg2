@@ -3,7 +3,8 @@ close all;
 clear;
 I = double(imread('Assignment2/source.jpg.jpg'));
 inp = input('enter the number of levels');
-
+subplot(1,2,1);
+imshow(uint8(I));
 array = gaussian(I,inp);
 arrlap = laplasian(I,inp);
 
@@ -31,4 +32,5 @@ for i=1:inp
 
 end
 img = laplacer(finallap,inp);
+subplot(1,2,2);
 imshow(uint8(img));

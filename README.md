@@ -1,3 +1,2 @@
 # DIP_asg
-
-s sadasdasdasdfa
+My assignment 2 solutions

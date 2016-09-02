@@ -11,19 +11,19 @@ sigma_r = 0.1;
 [x,y] = meshgrid(-w:w,-w:w);
 G = exp(-(x.^2+y.^2)/(2*sigma_d^2));
 
-sz = size(A);
+sz = size(im);
 result = zeros(sz);
 for i = 1:sz(1)
    for j = 1:sz(2)       
         % Extract local region.
          iMin = max(i-w,1);
-         iMax = min(i+w,dim(1));
+         iMax = min(i+w,sz(1));
          jMin = max(j-w,1);
-         jMax = min(j+w,dim(2));
+         jMax = min(j+w,sz(2));
          I = im(iMin:iMax,jMin:jMax);
       
          % Compute Gaussian intensity weights.
-         H = exp(-(I-A(i,j)).^2/(2*sigma_r^2));
+         H = exp(-(I-im(i,j)).^2/(2*sigma_r^2));
       
          % Calculate bilateral filter response.
          F = H.*G((iMin:iMax)-i+w+1,(jMin:jMax)-j+w+1);
