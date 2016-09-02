@@ -1,4 +1,10 @@
+clc;
+clear;
+close all;
+
 I= imread('Assignment2/face.jpg');
+subplot(1,2,1);
+imshow(I);
 R = I(:,:,1);
 G = I(:,:,2);
 B = I(:,:,3);
@@ -18,6 +24,7 @@ vyg = 0.1*xg;
 Dg = interp2(double(G), xg-vxg, yg-vyg);
 
 [xb, yb] = meshgrid(1:szb(2), 1:szb(1));
+
 vxb = 0.1*yb;  
 vyb = 0.1*xb;   
 Db = interp2(double(B), xb-vxb, yb-vyb);
@@ -25,5 +32,5 @@ Db = interp2(double(B), xb-vxb, yb-vyb);
 result(:,:,1) = Dr;
 result(:,:,2) = Dg;
 result(:,:,3) = Db;
-
+subplot(1,2,2);
 imshow(uint8(result));
